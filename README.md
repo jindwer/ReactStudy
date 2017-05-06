@@ -66,11 +66,17 @@ var Child = React.createClass({
 ```
 > React的生命周期
   
-    * React生成和更新组件都是组件的一个生命周期中进行的，生命周期中的时间点都是和React的DOM diff算法相关联，主要分为三个板块:
-    * mount,update,unmount
+    * React生成和更新组件都是组件的一个生命周期中进行的，生命周期中的时间点都是和React的DOM diff算法相关联，主要分为三个板块:mount,update,unmount
     
-    * 接下来是申明周期的详细:(钩子函数)
+    * 接下来是生命周期的详细:(钩子函数)
     
     constructor(组件的构造函数,设置初始属性和类型等) --> getInitialState(设置组件的状态属性) --> componentWillMount(组件即将被创建插入) --> [mounting(创建插入组件)] --> componentDidMount(组件创建插入完成,这之后才会获取到真实的DOM节点) --> componentReciveProps(组件接受变动的新属性值) --> shouldComponentUpdate(通过返回true/false来确定是否要更新组件) --> componentWillUpdate(组件即将被更新) --> [updating(组件正在更新)] --> componentDidUpdate(组件更新完成) --> componentWillUnmount(组件即将被移除,这里需要做一些清除定时，事件绑定等) --> [unmounting(组件正在移除)]
  
-   
+> React中的props和state的区别
+
+    props是属性的意思，state是状态的意思。两者都是React组件的对象，都是组件存储数据的载体，但两者在一些方面也存在很大的不同:  
+    
+    1. 两者作用不同:props主要用于父组件向子组件传递数据用的对象，用于存储页面展示的数据;state主要储存表征组件显示状态的数据。
+    2. 两者数据不同:props是存储子组件展示的数据;state是存储控制子组件展示状态的表征性的数据。
+    3. 工作原理不同:props对象是存储从后台获得的数据并通过数据流从父组件到子组件，完成数据的传递但不一定能展示;state对象是存储状态值，在有新内容需要展示或者需要改变组件结构时候,如需要展示新得到的props的数据的时候,通过setState来设置新的状态值从而导致页面部分重新渲染。
+    
